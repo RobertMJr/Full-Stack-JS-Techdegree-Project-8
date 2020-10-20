@@ -47,9 +47,9 @@ app.use((err, req, res, next) => {
   if (err.status === 404) {
     res.render('books/page-not-found', {err, title: "Page Not Found"});
   } else {
-    err.message = err.message || 'It looks like something went wrong on the server.';
-    err.status = err.status || 500;
-    res.render('error', {err});
+    err.message = 'Sorry! There was an unexpected error on the server.';
+    err.status = 500;
+    res.render('error', {err, title: "Server Error"});
   }
 });
 

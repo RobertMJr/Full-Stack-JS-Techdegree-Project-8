@@ -47,7 +47,9 @@ router.get('/:id', asyncHandler(async (req, res) => {
         console.log(book.id);
         res.render("books/update-book", {book, title: "Update Book" });
     } else {
-        res.sendStatus(404);
+        const err = new Error();
+        err.status = 404;
+        throw err;
     }
 }));
 
@@ -60,7 +62,9 @@ router.post('/:id', asyncHandler(async (req, res) => {
             await book.update(req.body); // Pass the data from the form to the db via the req.body
             res.redirect("/books");
         } else {
-            res.sendStatus(404);
+            const err = new Error();
+            err.status = 404;
+            throw err;
         }
     } catch(error) {
         if(error.name === "SequelizeValidationError") {
@@ -80,7 +84,9 @@ router.post('/:id/delete', asyncHandler(async (req, res) => {
         await book.destroy();
         res.redirect("/books");
     } else {
-        res.sendStatus(404);
+        const err = new Error();
+        err.status = 404;
+        throw err;
     }
 }));
 
