@@ -39,15 +39,13 @@ app.use('/books', books);
 app.use((req, res, next) => {
   const err = new Error();
   err.status = 404;
-  err.message = 'Oh no! Page not found.';
   next(err);
 });
 
 // error handler
 app.use((err, req, res, next) => {
   if (err.status === 404) {
-    console.log(`Error: ${err.status}. ${err.message}`);
-    res.render('page-not-found', {err});
+    res.render('books/page-not-found', {err, title: "Page Not Found"});
   } else {
     err.message = err.message || 'It looks like something went wrong on the server.';
     err.status = err.status || 500;
