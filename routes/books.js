@@ -1,6 +1,8 @@
 const express = require('express');
 const router = express.Router();
 const Book = require('../models').Book;
+const db = require('../models')
+const { Op } = db.Sequelize;
 
 /**
  * Handle function for wraping each route
@@ -17,8 +19,34 @@ function asyncHandler(cb) {
 
 /* GET books - show the full list of books */
 router.get('/', asyncHandler(async (req, res) => {
-    const books = await Book.findAll({ order: [["title", "ASC"]]});
-    res.render("books/index", {books});
+    let books;
+    if (req.query.search) {
+        console.log(req.query.search);
+        books = await Book.findAll({
+            where:{
+                [Op.or]:{
+                    title:{
+                        [Op.like]: '%' + req.query.search + '%'
+                    },
+                    author: {
+                        [Op.like]: '%' + req.query.search + '%'
+                    },
+                    genre: {
+                        [Op.like]: '%' + req.query.search + '%'
+                    },
+                    year: {
+                        [Op.like]: '%' + req.query.search + '%'
+                    },
+                }
+
+            }
+        })
+        res.render("books/index", {books});
+        
+    } else {
+        books = await Book.findAll({ order: [["title", "ASC"]]});
+        res.render("books/index", {books});
+    }
 }));
 
 /* GET books/new - show the create new book form */
@@ -89,5 +117,6 @@ router.post('/:id/delete', asyncHandler(async (req, res) => {
         throw err;
     }
 }));
+
 
 module.exports = router;
