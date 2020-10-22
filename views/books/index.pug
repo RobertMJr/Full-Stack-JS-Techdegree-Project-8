@@ -2,6 +2,10 @@ extends ../layout
 
 block content
     h1 Books
+    form(action="/books" method=get)
+        input(id="search", type="text", placeholder="Your search here..." name="search")
+        button(id="button", type="submit") Search
+        a(href="/books" class="button" id="clear") Home
     p
         a(href="/books/new", class="button") Create New Book
         table
