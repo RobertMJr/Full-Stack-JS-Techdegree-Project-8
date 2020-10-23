@@ -3,7 +3,7 @@ extends ../layout
 block content
     h1 Books
     form(action="/books" method=get)
-        input(id="search", type="text", placeholder="Your search here..." name="search")
+        input(id="search", type="text", placeholder="Search for books..." name="search")
         button(id="button", type="submit") Search
         a(href="/books" class="button" id="clear") Home
     p

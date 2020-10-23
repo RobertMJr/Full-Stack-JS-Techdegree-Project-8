@@ -24,12 +24,17 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     ul.addEventListener('click', (e) => {
-        const anchors = document.querySelectorAll('.pagination ul li a');
-        console.log(e.target);
-        for (let i = 0; i < anchors.length; i++) {
-            anchors[i].className = '';
+        /**
+         * The if statement ensures clicking outside the anchor element but still within the li element 
+         * does not perform the rest of the actions.
+         */
+        if (e.target.childElementCount === 0) {
+            const anchors = document.querySelectorAll('.pagination ul li a');
+            for (let i = 0; i < anchors.length; i++) {
+                anchors[i].className = '';
+            }
+            showPage(tableRow, e.target.textContent);
+            e.target.className = 'active'
         }
-        showPage(tableRow, e.target.textContent);
-        e.target.className = 'active'
     })
 });

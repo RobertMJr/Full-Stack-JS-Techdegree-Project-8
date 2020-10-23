@@ -51,7 +51,6 @@ router.get('/', asyncHandler(async (req, res) => {
             order: [["title", "ASC"]],
             
         });
-        // Reminder: count is 16 and rows contains the data \ add for loop for creating the pages in pug
 
         books = rows;
         const pages = Array(Math.ceil(count/resultsPerPage));
