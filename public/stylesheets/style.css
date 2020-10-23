@@ -99,6 +99,7 @@ input[type=text] {
 
 .pagination{
   text-align: left;
+  display: inline-block;
 }
 
 .pagination li{

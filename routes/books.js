@@ -39,6 +39,7 @@ router.get('/', asyncHandler(async (req, res) => {
                     },
                 }
             },
+            order: [["title", "ASC"]]
             
         })
         books = rows;

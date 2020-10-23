@@ -25,6 +25,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     ul.addEventListener('click', (e) => {
         const anchors = document.querySelectorAll('.pagination ul li a');
+        console.log(e.target);
         for (let i = 0; i < anchors.length; i++) {
             anchors[i].className = '';
         }
