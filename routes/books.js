@@ -20,9 +20,9 @@ function asyncHandler(cb) {
 /* GET books - show the full list of books */
 router.get('/', asyncHandler(async (req, res) => {
     let books;
+    const resultsPerPage = 5;
     if (req.query.search) {
-        console.log(req.query.search);
-        books = await Book.findAll({
+        let {count, rows} = await Book.findAndCountAll({
             where:{
                 [Op.or]:{
                     title:{
@@ -38,14 +38,23 @@ router.get('/', asyncHandler(async (req, res) => {
                         [Op.like]: '%' + req.query.search + '%'
                     },
                 }
-
-            }
+            },
+            
         })
-        res.render("books/index", {books});
+        books = rows;
+        const pages = Array(Math.ceil(count/resultsPerPage));
+        res.render("books/index", {books, pages});
         
     } else {
-        books = await Book.findAll({ order: [["title", "ASC"]]});
-        res.render("books/index", {books});
+        let {count, rows} = await Book.findAndCountAll({ 
+            order: [["title", "ASC"]],
+            
+        });
+        // Reminder: count is 16 and rows contains the data \ add for loop for creating the pages in pug
+
+        books = rows;
+        const pages = Array(Math.ceil(count/resultsPerPage));
+        res.render("books/index", {books, pages});
     }
 }));
 

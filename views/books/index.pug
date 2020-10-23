@@ -8,18 +8,28 @@ block content
         a(href="/books" class="button" id="clear") Home
     p
         a(href="/books/new", class="button") Create New Book
-        table
-            thead
-                tr
-                    th Title
-                    th Author
-                    th Genre
-                    th Year
-            tbody
-            each book in books
-                tr
-                    td
-                        a(href="/books/" + book.id)= book.title
-                    td= book.author
-                    td= book.genre
-                    td= book.year
+        if Object.keys(books).length > 0
+            table
+                thead
+                    tr
+                        th Title
+                        th Author
+                        th Genre
+                        th Year
+                tbody
+                each book in books
+                    tr(class='result')
+                        td
+                            a(href="/books/" + book.id, class="page")= book.title
+                        td= book.author
+                        td= book.genre
+                        td= book.year
+            div(class="pagination")        
+                ul
+                    each page, index in pages
+                        li
+                            a(href="#")= index+1 
+                        
+
+        else
+            p Sorry! No results found.

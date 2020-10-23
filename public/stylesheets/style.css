@@ -96,6 +96,29 @@ input[type=text] {
   color: rgb(236, 15, 15);
 }
 
+
+.pagination{
+  text-align: left;
+}
+
+.pagination li{
+  display: inline;
+}
+
+.pagination li a{
+  margin: 10px 4px 0px 0px;
+  padding: 6px;
+  border: 0.5px solid #019875;
+  border-radius: 5px;
+  text-align: center;
+  color: white;
+  background-color: #019875;
+}
+
+.pagination li a:hover{
+  background-color: rgb(107, 214, 107);
+}
+
 #button {
   color: white;
   background: #019875;
@@ -111,7 +134,7 @@ input[type=text] {
 #search {
   padding: 10px 14px 12px;
   margin-left: 0px;
-  margin-right: 2px;
+  margin-right: 3px;
   border: 0.5px solid silver;
 }
 
@@ -120,6 +143,11 @@ input[type=text] {
 }
 
 #clear {
-  margin-left: 2px;
+  margin-left: 3px;
   border: 0.5px solid #019875;
+}
+
+li a.active{
+  background-color: rgb(107, 214, 107);
+  border-color: #019875;
 }
