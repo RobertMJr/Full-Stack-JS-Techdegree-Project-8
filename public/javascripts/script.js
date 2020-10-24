@@ -26,7 +26,7 @@ document.addEventListener('DOMContentLoaded', () => {
     ul.addEventListener('click', (e) => {
         /**
          * The if statement ensures clicking outside the anchor element but still within the li element 
-         * does not perform the rest of the actions.
+         * does not perform the rest of the actions as the anchor has no child elements.
          */
         if (e.target.childElementCount === 0) {
             const anchors = document.querySelectorAll('.pagination ul li a');

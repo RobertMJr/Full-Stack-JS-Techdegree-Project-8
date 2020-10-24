@@ -5,7 +5,7 @@ const db = require('../models')
 const { Op } = db.Sequelize;
 
 /**
- * Handle function for wraping each route
+ * Handle function for wraping routes
  */
 function asyncHandler(cb) {
     return async(req, res, next) => {
