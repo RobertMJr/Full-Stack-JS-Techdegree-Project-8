@@ -1,7 +1,7 @@
 # SQL-Library-Manager
 ## An application to manage a collection of books.
 
-Web application for listing, adding, updating and deleting books in a library application.
+Web application for listing, adding, updating and deleting books in a library application.  
 My Eighth Techdegree Project 
 
 ### How To Run:
