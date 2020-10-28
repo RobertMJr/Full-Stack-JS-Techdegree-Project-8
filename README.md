@@ -2,7 +2,7 @@
 ## An application to manage a collection of books.
 
 Web application for listing, adding, updating and deleting books in a library application.  
-My Eighth Techdegree Project 
+My Eighth Techdegree Project. 
 
 ### How To Run:
 1. Download project files from GitHub.
