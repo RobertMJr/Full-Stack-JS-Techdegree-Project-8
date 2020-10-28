@@ -1,7 +1,8 @@
-# Full-Stack-JS-Techdegree-Project-8
-## My Eighth Techdegree Project
+# SQL-Library-Manager
+## An application to manage a collection of books.
 
-SQL Library Manager  
+Web application for listing, adding, updating and deleting books in a library application.
+My Eighth Techdegree Project 
 
 ### How To Run:
 1. Download project files from GitHub.
